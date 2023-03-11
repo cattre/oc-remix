@@ -1,0 +1,9 @@
+<Project>
+
+    <PropertyGroup>
+        <AspNetCoreTargetFramework>net7.0</AspNetCoreTargetFramework>
+    </PropertyGroup>
+
+    <Import Project="../Common.props" />
+
+</Project>

@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
+        <RootNamespace>OCRemix.Users.Infrastructure</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="OrchardCore.Data.YesSql.Abstractions" Version="$(OrchardCoreVersion)" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\OCRemix.Users.Application\OCRemix.Users.Application.csproj" />
+      <ProjectReference Include="..\OCRemix.Users.Domain\OCRemix.Users.Domain.csproj" />
+    </ItemGroup>
+
+</Project>

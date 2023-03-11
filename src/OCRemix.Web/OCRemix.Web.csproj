@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>OCRemix.Web</RootNamespace>
+        <LangVersion>default</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="OrchardCore.Configuration.KeyVault" />
+        <PackageReference Include="OrchardCore.Logging.NLog" />
+        <PackageReference Include="OrchardCore.Application.Cms.Targets" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Condition="'$(RazorRuntimeCompilation)' == 'true'" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\OCRemix.Users\OCRemix.Users.Api\OCRemix.Users.Api.csproj" />
+        <ProjectReference Include="..\OCRemix.Users\OCRemix.Users.Application\OCRemix.Users.Application.csproj" />
+        <ProjectReference Include="..\OCRemix.Users\OCRemix.Users.Domain\OCRemix.Users.Domain.csproj" />
+        <ProjectReference Include="..\OCRemix.Users\OCRemix.Users.Infrastructure\OCRemix.Users.Infrastructure.csproj" />
+        <ProjectReference Include="..\Modules\OCRemix.API\OCRemix.API.csproj" />
+<!--            <GlobalPropertiesToRemove></GlobalPropertiesToRemove>-->
+<!--        </ProjectReference>-->
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="wwwroot\.placeholder" />
+    </ItemGroup>
+</Project>

@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
+        <RootNamespace>OCRemix.Users.Application</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\OCRemix.Users.Domain\OCRemix.Users.Domain.csproj" />
+    </ItemGroup>
+
+</Project>
