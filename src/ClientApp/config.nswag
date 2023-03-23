@@ -15,7 +15,7 @@
       "moduleName": "",
       "namespace": "",
       "typeScriptVersion": 4.5,
-      "template": "Fetch",
+      "template": "Axios",
       "promiseType": "Promise",
       "httpClass": "HttpClient",
       "withCredentials": false,
@@ -68,7 +68,7 @@
       "enumNameGeneratorType": null,
       "serviceHost": null,
       "serviceSchemes": null,
-      "output": "src/api/api.ts",
+      "output": "app/api/api.ts",
       "newLineBehavior": "Auto"
     }
   }
