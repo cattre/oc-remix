@@ -257,7 +257,10 @@ export class ApiException extends Error {
 }
 
 function throwException(message: string, status: number, response: string, headers: { [key: string]: any; }, result?: any): any {
-    throw new ApiException(message, status, response, headers, result);
+    if (result !== null && result !== undefined)
+        throw result;
+    else
+        throw new ApiException(message, status, response, headers, null);
 }
 
 function isAxiosError(obj: any | undefined): obj is AxiosError {

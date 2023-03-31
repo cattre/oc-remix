@@ -17,15 +17,24 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="NSwag.CodeGeneration.TypeScript" Version="13.18.2" />
         <PackageReference Include="OrchardCore.Users.Abstractions" />
         <PackageReference Include="OrchardCore.Module.Targets" />
     </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="Hellang.Middleware.ProblemDetails" />
+        <PackageReference Include="NSwag.CodeGeneration.TypeScript" Version="13.18.2" />
         <PackageReference Include="NSwag.AspNetCore" />
         <PackageReference Include="NSwag.Core" />
         <PackageReference Include="NSwag.Generation.AspNetCore" />
+        <PackageReference Include="OpenIddict.AspNetCore" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="Recipes\openid.recipe.json">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
     </ItemGroup>
 </Project>

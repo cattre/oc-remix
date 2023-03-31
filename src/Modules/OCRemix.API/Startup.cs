@@ -3,30 +3,40 @@ using Hellang.Middleware.ProblemDetails;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using Namotion.Reflection;
 using NSwag;
 using NSwag.Generation.Processors.Security;
 using OrchardCore.Environment.Shell;
+using OrchardCore.Environment.Shell.Configuration;
 using OrchardCore.Environment.Shell.Scope;
 using OrchardCore.Modules;
 using OrchardCore.Users;
-
 
 namespace OCRemix.API
 {
     public class Startup : StartupBase
     {
         private readonly string _tenantName;
+        private readonly IShellConfiguration _shellConfiguration;
 
-        public Startup(ShellSettings shellSettings)
+        public Startup(ShellSettings shellSettings, IShellConfiguration shellConfiguration)
         {
             _tenantName = shellSettings.Name;
+            _shellConfiguration = shellConfiguration;
         }
 
         public override void ConfigureServices(IServiceCollection services)
         {
+            var tokenLifetime = _shellConfiguration.TryGetPropertyValue<int?>("Authentication:AccessTokenLifetime");
+            if (tokenLifetime != null)
+            {
+                services.AddOpenIddict().AddServer(options => options.SetAccessTokenLifetime(TimeSpan.FromSeconds((int)tokenLifetime)));
+            }
+
             services.ConfigureApplicationCookie(options =>
             {
                 var userOptions = ShellScope.Services.GetRequiredService<IOptions<UserOptions>>();
@@ -79,36 +89,6 @@ namespace OCRemix.API
                     var env = context.RequestServices.GetRequiredService<IHostEnvironment>();
                     return env.IsDevelopment() && false;
                 };
-
-
-                // Func<IHaveAProblem, ProblemDetails> problemDetailsFactory = (IHaveAProblem ex) =>
-                // {
-                //     var pd = ex.GetProblemDetails();
-                //
-                //     if (pd is MountbaseValidationProblemDetails vpd)
-                //     {
-                //         var ret = new Microsoft.AspNetCore.Mvc.ValidationProblemDetails { Title = vpd.Title, Status = vpd.StatusCode, Detail = vpd.Details };
-                //
-                //         foreach (var error in vpd.Errors)
-                //         {
-                //             ret.Errors.Add(error.Key, error.Value);
-                //         }
-                //
-                //         return ret;
-                //     }
-                //     else
-                //     {
-                //         return new Microsoft.AspNetCore.Mvc.ProblemDetails { Title = pd.Title, Status = pd.StatusCode, Detail = pd.Details };
-                //     }
-                // };
-                //
-                // options.Map<MountbaseException>(problemDetailsFactory);
-                // //options.Map<MountbaseNotFoundException>(problemDetailsFactory);
-                // options.Map<MountbaseArgumentException>(problemDetailsFactory);
-                // options.Map<MountbaseArgumentNullException>(problemDetailsFactory);
-                // options.Map<MountbaseInvalidOperationException>(problemDetailsFactory);
-                // options.Map<MountbaseValidationException>(problemDetailsFactory);
-
             });
 
             services.AddOpenApiDocument(document =>

@@ -1,0 +1,62 @@
+{
+  "name": "OpenIdSetup",
+  "displayName": "Open ID Setup",
+  "description": "Open ID setup recipe",
+  "author": "",
+  "website": "",
+  "version": "",
+  "issetuprecipe": false,
+  "categories": [],
+  "tags": [],
+  "steps": [
+    {
+      "name": "Feature",
+      "enable": [
+        "OrchardCore.OpenId.Management",
+        "OrchardCore.OpenId.Server",
+        "OrchardCore.OpenId.Validation"
+      ]
+    },
+    {
+      "name": "OpenIdScope",
+      "Description": "Roles",
+      "DisplayName": "Roles",
+      "ScopeName": "roles",
+      "Resources": ""
+    },
+    {
+      "name": "OpenIdApplication",
+      "ClientId": "ClientApp",
+      "DisplayName": "Client App",
+      "Type": "public",
+      "AllowAuthorizationCodeFlow": true,
+      "AllowRefreshTokenFlow": true,
+      "AllowLogoutEndpoint": true,
+      "ScopeEntries": [
+        {
+          "Name": "roles",
+          "Selected": true
+        }
+      ],
+      "RedirectUris": "https://localhost:3000",
+      "PostLogoutRedirectUris": "https://localhost:3000",
+      "ConsentType": "implicit"
+    },
+    {
+      "name": "OpenIdApplication",
+      "ClientId": "OpenAPI",
+      "ClientSecret": "dev",
+      "DisplayName": "OpenAPI (Swagger)",
+      "Type": "Confidential",
+      "AllowAuthorizationCodeFlow": true,
+      "ScopeEntries": [
+        {
+          "Name": "roles",
+          "Selected": true
+        }
+      ],
+      "RedirectUris": "https://localhost:44300/swagger/oauth2-redirect.html https://localhost:5987/swagger/oauth2-redirect.html",
+      "ConsentType": "explicit"
+    }
+  ]
+}

@@ -7,5 +7,6 @@ using OrchardCore.Modules.Manifest;
     Description = "OCRemix Users Api",
     Category = "OCRemix",
     Dependencies = new string[] {
-        "OCRemix.Api"
+        "OCRemix.Api",
+        "OrchardCore.OpenId.Server"
     })]

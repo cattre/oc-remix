@@ -1,11 +1,14 @@
-import { json } from '@remix-run/node'
+import { json, LoaderArgs } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
 import axios from 'axios'
 import { UsersService } from '~/api/api'
+import { requireUserSession } from '~/auth/session.server'
 
-export const loader = async () => {
+export const loader = async ({ request }: LoaderArgs) => {
+  const session = await requireUserSession(request)
+
   const instance = axios.create({
-    headers: { Authorization: `Bearer ` },
+    headers: { Authorization: `Bearer ${session.data.access_token}` },
     transformResponse: (res) => res,
   })
 
