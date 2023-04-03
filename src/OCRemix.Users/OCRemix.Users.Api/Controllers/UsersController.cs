@@ -26,4 +26,10 @@ public class UsersController : ControllerBase
     {
         return Ok(await _userQueries.GetUsersAsync());
     }
+
+    [HttpPost("users")]
+    public async Task<ActionResult<IEnumerable<UserDto>>> AddUser()
+    {
+        return Ok(await _userQueries.GetUsersAsync());
+    }
 }

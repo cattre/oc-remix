@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
+        <RootNamespace>OCRemix.Items.Api</RootNamespace>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="OrchardCore.Module.Targets" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="MediatR" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\OCRemix.Items.Application\OCRemix.Items.Application.csproj" />
+        <ProjectReference Include="..\OCRemix.Items.Infrastructure\OCRemix.Items.Infrastructure.csproj" />
+    </ItemGroup>
+
+</Project>

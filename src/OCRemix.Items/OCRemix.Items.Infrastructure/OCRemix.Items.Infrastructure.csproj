@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    
+    <PropertyGroup>
+        <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
+        <RootNamespace>OCRemix.Items.Infrastructure</RootNamespace>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="OrchardCore.Data.YesSql.Abstractions" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\OCRemix.Items.Application\OCRemix.Items.Application.csproj" />
+        <ProjectReference Include="..\OCRemix.Items.Domain\OCRemix.Items.Domain.csproj" />
+    </ItemGroup>
+
+</Project>

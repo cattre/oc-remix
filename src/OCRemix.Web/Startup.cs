@@ -24,6 +24,8 @@ namespace OCRemix.Web
 				var shellConfiguration = serviceProvider.GetRequiredService<IShellConfiguration>();
 			});
 
+			services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<Startup>());
+
 			if (_env.IsDevelopment() || _env.EnvironmentName == "Preview")
 			{
 				builder.AddSetupFeatures("OrchardCore.AutoSetup");

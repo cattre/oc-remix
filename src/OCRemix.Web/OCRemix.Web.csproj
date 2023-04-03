@@ -19,6 +19,11 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\Core\OCRemix.Infrastructure\OCRemix.Infrastructure.csproj" />
+        <ProjectReference Include="..\OCRemix.Items\OCRemix.Items.API\OCRemix.Items.API.csproj" />
+        <ProjectReference Include="..\OCRemix.Items\OCRemix.Items.Application\OCRemix.Items.Application.csproj" />
+        <ProjectReference Include="..\OCRemix.Items\OCRemix.Items.Domain\OCRemix.Items.Domain.csproj" />
+        <ProjectReference Include="..\OCRemix.Items\OCRemix.Items.Infrastructure\OCRemix.Items.Infrastructure.csproj" />
         <ProjectReference Include="..\OCRemix.Users\OCRemix.Users.Api\OCRemix.Users.Api.csproj" />
         <ProjectReference Include="..\OCRemix.Users\OCRemix.Users.Application\OCRemix.Users.Application.csproj" />
         <ProjectReference Include="..\OCRemix.Users\OCRemix.Users.Domain\OCRemix.Users.Domain.csproj" />

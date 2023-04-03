@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
+        <RootNamespace>OCRemix.Items.Application</RootNamespace>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="OrchardCore.Data.YesSql.Abstractions" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="MediatR" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Core\OCRemix.Infrastructure\OCRemix.Infrastructure.csproj" />
+      <ProjectReference Include="..\OCRemix.Items.Domain\OCRemix.Items.Domain.csproj" />
+    </ItemGroup>
+
+</Project>

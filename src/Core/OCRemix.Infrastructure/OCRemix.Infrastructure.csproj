@@ -2,7 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
-        <RootNamespace>OCRemix.Users.Application</RootNamespace>
+        <RootNamespace>OCRemix.Infrastructure</RootNamespace>
+<!--        <ImplicitUsings>enable</ImplicitUsings>-->
     </PropertyGroup>
 
     <ItemGroup>
@@ -11,10 +12,6 @@
 
     <ItemGroup>
         <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\OCRemix.Users.Domain\OCRemix.Users.Domain.csproj" />
     </ItemGroup>
 
 </Project>

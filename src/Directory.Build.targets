@@ -53,11 +53,14 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Update="MediatR" Version="12.0.1" />
+        <PackageReference Update="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
         <PackageReference Update="Hellang.Middleware.ProblemDetails" Version="6.5.1" />
         <PackageReference Update="NSwag.Core" Version="13.18.2" />
         <PackageReference Update="NSwag.Generation.AspNetCore" Version="13.18.2" />
         <PackageReference Update="NSwag.AspNetCore" Version="13.18.2" />
         <PackageReference Update="OpenIddict.AspNetCore" Version="3.1.1" />
+        <PackageReference Update="Newtonsoft.Json" Version="13.0.3" />
     </ItemGroup>
 
 
