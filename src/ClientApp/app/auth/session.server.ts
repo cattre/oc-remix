@@ -1,3 +1,5 @@
+// Auth approach taken from https://aarongodin.dev/adding-oauth-oidc-to-a-remix-app/
+
 import { generators, Issuer, Client } from 'openid-client'
 import { config } from '~/config.server'
 import { createCookieSessionStorage } from '@remix-run/node'

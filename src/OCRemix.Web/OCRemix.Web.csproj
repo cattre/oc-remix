@@ -24,10 +24,6 @@
         <ProjectReference Include="..\OCRemix.Items\OCRemix.Items.Application\OCRemix.Items.Application.csproj" />
         <ProjectReference Include="..\OCRemix.Items\OCRemix.Items.Domain\OCRemix.Items.Domain.csproj" />
         <ProjectReference Include="..\OCRemix.Items\OCRemix.Items.Infrastructure\OCRemix.Items.Infrastructure.csproj" />
-        <ProjectReference Include="..\OCRemix.Users\OCRemix.Users.Api\OCRemix.Users.Api.csproj" />
-        <ProjectReference Include="..\OCRemix.Users\OCRemix.Users.Application\OCRemix.Users.Application.csproj" />
-        <ProjectReference Include="..\OCRemix.Users\OCRemix.Users.Domain\OCRemix.Users.Domain.csproj" />
-        <ProjectReference Include="..\OCRemix.Users\OCRemix.Users.Infrastructure\OCRemix.Users.Infrastructure.csproj" />
         <ProjectReference Include="..\Modules\OCRemix.API\OCRemix.API.csproj" />
 <!--            <GlobalPropertiesToRemove></GlobalPropertiesToRemove>-->
 <!--        </ProjectReference>-->
