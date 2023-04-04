@@ -1,32 +1,36 @@
+import { Heading, Box, Container, Table } from '@chakra-ui/react'
+import { json, LoaderArgs } from '@remix-run/node'
+import { useLoaderData } from '@remix-run/react'
+import axios from 'axios'
+import { ItemsService, UsersService } from '~/api/api'
+import { requireUserSession } from '~/auth/session.server'
+import SimpleTable from '~/components/SimpleTable'
+
+export const loader = async ({ request }: LoaderArgs) => {
+  const session = await requireUserSession(request)
+
+  const instance = axios.create({
+    headers: { Authorization: `Bearer ${session.data.access_token}` },
+    transformResponse: (res) => res,
+  })
+
+  const itemsClient = new ItemsService('http://localhost:5986', instance)
+  const res = itemsClient.listItems()
+  return json(await res)
+}
+
 export default function Index() {
-  return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-      <h1>Welcome to Remix</h1>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
-          >
-            15m Quickstart Blog Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
-    </div>
-  );
+  const items = useLoaderData<typeof loader>()
+
+  const columns = [
+    {id: 'name', label: 'Title'},
+    {id: 'description', label: 'Description'},
+    {id: 'date', label: 'Due Date'},
+    {id: 'isChecked', label: ''}
+  ]
+
+  return <Container>
+    <Heading>Items</Heading>
+    <SimpleTable data={items} columns={columns} />
+  </Container>
 }
