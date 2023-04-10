@@ -25,6 +25,7 @@
         <ProjectReference Include="..\OCRemix.Items\OCRemix.Items.Domain\OCRemix.Items.Domain.csproj" />
         <ProjectReference Include="..\OCRemix.Items\OCRemix.Items.Infrastructure\OCRemix.Items.Infrastructure.csproj" />
         <ProjectReference Include="..\Modules\OCRemix.API\OCRemix.API.csproj" />
+        <ProjectReference Include="..\Modules\OCRemix.Theme\OCRemix.Theme.csproj" />
 <!--            <GlobalPropertiesToRemove></GlobalPropertiesToRemove>-->
 <!--        </ProjectReference>-->
     </ItemGroup>

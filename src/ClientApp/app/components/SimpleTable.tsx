@@ -18,8 +18,8 @@ export default function SimpleTable<T>(props: Props<T>) {
         </Tr>
       </Thead>
       <Tbody>
-        {props.data.map(row => <Tr>
-          {props.columns.map(cell => <Td>{row[cell.id as keyof T] as string}</Td>)}
+        {props.data.map(row => <Tr key={row['id' as keyof T] as string}>
+          {props.columns.map(cell => <Td key={cell.id}>{row[cell.id as keyof T] as string}</Td>)}
         </Tr>)}
       </Tbody>
     </Table>

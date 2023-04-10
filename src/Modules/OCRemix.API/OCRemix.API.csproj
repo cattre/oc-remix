@@ -4,7 +4,6 @@
         <TargetFramework>$(AspNetCoreTargetFramework)</TargetFramework>
         <RootNamespace>OCRemix.API</RootNamespace>
         <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>

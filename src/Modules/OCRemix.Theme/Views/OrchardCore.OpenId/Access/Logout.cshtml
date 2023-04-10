@@ -1,0 +1,20 @@
+@using Microsoft.Extensions.Primitives
+@using OrchardCore.OpenId.ViewModels
+@model LogoutViewModel
+
+<form asp-area="OrchardCore.OpenId" asp-controller="Access" asp-action="Logout" method="post" name="logout">
+    @* Flow the request parameters so they can be received by the Accept/Reject actions: *@
+    @foreach (var parameter in Context.Request.HasFormContentType ?
+        (IEnumerable<KeyValuePair<string, StringValues>>)Context.Request.Form : Context.Request.Query)
+    {
+        <input type="hidden" name="@parameter.Key" value="@parameter.Value" />
+    }
+
+    <input class="btn btn-lg btn-success" name="submit.Accept" type="hidden" value="Yes" />
+</form>
+
+<script type="text/javascript">
+    window.onload = function () {
+       document.forms["logout"].submit();
+    }
+</script>

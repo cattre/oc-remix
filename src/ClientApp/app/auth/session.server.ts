@@ -19,6 +19,7 @@ async function getClient(): Promise<Client> {
     client_secret: config.oidcClientSecret,
     redirect_uris: [`${config.oidcRedirectBase}/auth/callback`],
     response_types: ['code'],
+    post_logout_redirect_uris: [`${config.oidcRedirectBase}`]
   })
   return client
 }
@@ -109,10 +110,9 @@ export async function authorizeUser(request: Request) {
 export async function logoutUser(request: Request) {
   const session = await sessionStorage.getSession(request.headers.get('cookie'))
   const cookie = await sessionStorage.destroySession(session)
-  const returnTo = encodeURIComponent(`${config.oidcRedirectBase}/auth/logout-success`)
+  const client = await getClient()
 
-  // This is a non-standard logout, since Auth0 does not have the end_session_url in their openid-configuration
-  throw redirect(`${config.oidcIssuer}/v2/logout?client_id=${config.oidcClientID}&returnTo=${returnTo}`, {
+  throw redirect(`${client.endSessionUrl()}`, {
     headers: {
       'Set-Cookie': cookie
     }

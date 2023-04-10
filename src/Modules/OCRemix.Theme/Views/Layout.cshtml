@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="@Orchard.CultureName()">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@RenderTitleSegments(Site.SiteName, "before")</title>
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <resources type="Meta" />
+    <resources type="HeadLink" />
+    <resources type="Stylesheet" />
+    <resources type="HeadScript" />
+    @await RenderSectionAsync("HeadMeta", required: false)
+</head>
+
+<body dir="@Orchard.CultureDir()">
+    @await RenderSectionAsync("Header", required: false)
+    <main role="main" class="container-fluid">
+        @await RenderSectionAsync("Messages", required: false)
+        @await RenderBodyAsync()
+    </main>
+    <resources type="FootScript" />
+</body>
+
+</html>
